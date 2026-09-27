@@ -1816,6 +1816,7 @@
         <h3>기본 용어 둘러보기</h3>
         <div class="filter-row" id="builtin-category-row"></div>
         <div class="my-terms-list" id="builtin-terms-list"></div>
+        <div class="filter-row" id="builtin-pagination-row" style="margin-top: 14px"></div>
       </div>
     </div>
   </section>
@@ -1833,7 +1834,7 @@
       </div>
       <input type="file" id="backup-file" accept=".html,.json,text/html,application/json" hidden />
     </div>
-    © 2026 뉴스한입 · 포트폴리오 프로젝트 예시입니다
+    © 2026 뉴스한입
   </footer>
 
 <!-- 용어사전 기본 용어 50개(BUILTIN_TERMS)는 별도 파일에 있어요. 아래 script보다 먼저 불러와야 해요. -->
@@ -3520,6 +3521,8 @@
 
   // 기본 용어 둘러보기 (분야별로 걸러 보고, 눌러서 담을 수 있어요)
   let builtinCategoryFilter = "전체";
+  let builtinPage = 1;
+  const BUILTIN_PAGE_SIZE = 5; // 한 페이지에 5개씩만 보여줘요
 
   function renderBuiltinList() {
     const row = document.getElementById("builtin-category-row");
@@ -3532,29 +3535,78 @@
       btn.textContent = category;
       btn.addEventListener("click", () => {
         builtinCategoryFilter = category;
+        builtinPage = 1; // 카테고리를 바꾸면 첫 페이지로 돌아가요
         renderBuiltinList();
       });
       row.appendChild(btn);
     });
 
+    const filtered = BUILTIN_TERMS.filter(
+      (entry) => builtinCategoryFilter === "전체" || entry.category === builtinCategoryFilter
+    );
+
+    const totalPages = Math.max(1, Math.ceil(filtered.length / BUILTIN_PAGE_SIZE));
+    if (builtinPage > totalPages) builtinPage = totalPages;
+
+    const start = (builtinPage - 1) * BUILTIN_PAGE_SIZE;
+    const pageItems = filtered.slice(start, start + BUILTIN_PAGE_SIZE);
+
     const listEl = document.getElementById("builtin-terms-list");
     listEl.innerHTML = "";
 
-    BUILTIN_TERMS.filter((entry) => builtinCategoryFilter === "전체" || entry.category === builtinCategoryFilter).forEach(
-      (entry) => {
-        listEl.appendChild(
-          createTermResultCard(
-            {
-              term: entry.term,
-              meaning: entry.meaning,
-              tag: entry.category,
-              meaningSource: { kind: "builtin", label: "뉴스한입 기본 용어" },
-            },
-            null
-          )
-        );
+    pageItems.forEach((entry) => {
+      listEl.appendChild(
+        createTermResultCard(
+          {
+            term: entry.term,
+            meaning: entry.meaning,
+            tag: entry.category,
+            meaningSource: { kind: "builtin", label: "뉴스한입 기본 용어" },
+          },
+          null
+        )
+      );
+    });
+
+    // 페이지 번호 버튼 (‹ 1 2 3 4 ›)
+    const pageRow = document.getElementById("builtin-pagination-row");
+    pageRow.innerHTML = "";
+
+    if (totalPages > 1) {
+      const prevBtn = document.createElement("button");
+      prevBtn.type = "button";
+      prevBtn.className = "filter-chip";
+      prevBtn.textContent = "‹";
+      prevBtn.disabled = builtinPage === 1;
+      prevBtn.addEventListener("click", () => {
+        builtinPage--;
+        renderBuiltinList();
+      });
+      pageRow.appendChild(prevBtn);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement("button");
+        pageBtn.type = "button";
+        pageBtn.className = "filter-chip" + (i === builtinPage ? " active" : "");
+        pageBtn.textContent = i;
+        pageBtn.addEventListener("click", () => {
+          builtinPage = i;
+          renderBuiltinList();
+        });
+        pageRow.appendChild(pageBtn);
       }
-    );
+
+      const nextBtn = document.createElement("button");
+      nextBtn.type = "button";
+      nextBtn.className = "filter-chip";
+      nextBtn.textContent = "›";
+      nextBtn.disabled = builtinPage === totalPages;
+      nextBtn.addEventListener("click", () => {
+        builtinPage++;
+        renderBuiltinList();
+      });
+      pageRow.appendChild(nextBtn);
+    }
   }
 
   // ----- 복습 모드 -----
