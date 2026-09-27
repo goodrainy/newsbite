@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>뉴스한입 - 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    background: #f7f9fc;
+    color: #1b1f27;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 60px 6% 80px; }
+  a.back { font-size: 0.85rem; color: #6b7280; text-decoration: none; }
+  h1 {
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 1.5rem;
+    margin: 14px 0 6px;
+  }
+  .lead { color: #6b7280; margin-bottom: 20px; }
+  .numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .numbers span {
+    background: #eaf1ff;
+    color: #1e4fc4;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  section { margin-bottom: 32px; }
+  h2 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #2f6fed;
+    display: inline-block;
+  }
+  p { font-size: 0.95rem; }
+  footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e9f0;
+    font-size: 0.82rem;
+    color: #6b7280;
+  }
+  footer a { color: #2f6fed; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 뉴스한입으로 돌아가기</a>
+  <h1>뉴스한입 — 포트폴리오</h1>
+  <p class="lead">매일 쏟아지는 뉴스를 짧게 정리해서 보여주고, 모르는 용어와 관련 주가까지 한 번에 확인할 수 있게 만드는 걸 하고 있습니다.</p>
+
+  <div class="numbers">
+    <span>실제 동작 기능 4개</span>
+    <span>버그 수정 7회</span>
+    <span>연동 외부 API 3개</span>
+  </div>
+
+  <section>
+    <h2>① 문제</h2>
+    <p>시간은 없는데 뉴스는 제대로 공부해보고 싶었던 게 진짜 문제였습니다. 기사는 너무 많고, 모르는 용어는 낯설고, 사회 이슈와 주가의 연관성은 감으로만 알았습니다. 이 불편을 겪은 건 본인 스스로였고, 그래서 뉴스 요약·용어사전·주식 예측 세 축으로 서비스를 좁혔습니다.</p>
+  </section>
+
+  <section>
+    <h2>② 내가 한 것</h2>
+    <p>실제로 동작하는 기능은 뉴스 요약, 사회 뉴스로 보는 주식, 용어사전, 데이터 백업 4가지입니다. 뉴스 요약은 카테고리별로 오늘 또는 지난 7일 기사를 중복·무관 기사를 걸러 보여줍니다. 사회 뉴스로 보는 주식은 관련 기사를 보고 오를지 내릴지 예측한 뒤, 나중에 실제 종가와 비교해 적중 여부를 보여줍니다. 용어사전은 기본 용어와 우리말샘 조회, 직접 작성을 함께 지원하고 어느 기사에서 만난 용어인지 문맥까지 기록합니다.</p>
+  </section>
+
+  <section>
+    <h2>③ 결과</h2>
+    <p>배포 주소는 <a href="https://my-newsbite.vercel.app/">https://my-newsbite.vercel.app/</a> 입니다. 중복 기사 판별 로직은 실제 기사 24개(같은 사건 18쌍·다른 사건 258쌍)로 검증해 기준값 0.12에서 놓친 쌍과 잘못 합친 쌍 모두 0개를 확인했습니다. 인기 종목은 최근 기사 1000건(API 최대치)을 받아도 하루를 못 거슬러 올라간다는 것도 실측으로 확인했습니다.</p>
+  </section>
+
+  <section>
+    <h2>④ 자른 기능과 이유</h2>
+    <p>기사 본문 전체를 요약하는 기능은 네이버 API가 본문 자체를 제공하지 않아 멈췄고, 제목과 키워드 기반 요약으로 대체했습니다. 종목 뉴스를 종가 기준일과 정확히 같은 날짜로 맞추려던 계획도, 인기 종목은 API 한도 안에서 그 날짜에 도달조차 못 한다는 걸 확인하고 접었습니다 — 대신 오늘 기사로 예측하는 방식으로 바꿨습니다. 디자인 스킬이 제안한 아이콘·일러스트도 적용해봤지만 원래 버전보다 못하다고 판단해 되돌렸습니다.</p>
+  </section>
+
+  <section>
+    <h2>⑤ AI를 어떻게 썼나</h2>
+    <p>코드 작성과 배포, 버그 진단까지 전 과정을 AI와 함께 했습니다. 코드를 여러 조각으로 나눠 전달하는 과정에서 코드 블록이 통째로 빠지는 실수가 두 번 있었고, 배포된 사이트를 다시 불러와 원본과 비교하는 방식으로 매번 찾아 고쳤습니다. 동음이의어 처리, 검색 출처 기록, 스크립트 이스케이프 같은 버그도 같은 방식으로 총 7번 수정했습니다.</p>
+  </section>
+
+  <section>
+    <h2>⑥ 다음에 할 것</h2>
+    <p>로그인을 붙여 여러 기기에서 기록을 이어볼 수 있는 앱으로 만들고 싶습니다. 경제 전문 매체의 API를 유료로 받아 경제·경영 특화 서비스로 발전시키는 것도 고려 중입니다. 지금 쓰는 중복·무관 기사 판별 기준은 기사 24개로 검증한 값이라, 더 다양한 기사로 다시 검증해볼 필요가 있습니다.</p>
+  </section>
+
+  <footer>
+    © 2026 뉴스한입 · <a href="/">뉴스한입 홈으로</a>
+  </footer>
+</div>
+</body>
+</html>
