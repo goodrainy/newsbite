@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>뉴스한입 - 공부 기록</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    background: #f7f9fc;
+    color: #1b1f27;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 60px 6% 80px; }
+  a.back { font-size: 0.85rem; color: #6b7280; text-decoration: none; }
+  h1 { font-family: "Do Hyeon", sans-serif; font-size: 1.5rem; margin: 14px 0 6px; }
+  .lead { color: #6b7280; margin-bottom: 40px; font-size: 0.92rem; }
+
+  .week-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 44px 0 18px;
+  }
+  .week-badge {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #2f6fed;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 0.95rem;
+  }
+  .week-header h2 { font-size: 1.15rem; }
+
+  .link-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .link-row a {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1e4fc4;
+    background: #eaf1ff;
+    padding: 5px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .link-row a:hover { background: #dbe4f3; }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e5e9f0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .card .term { font-weight: 800; margin-bottom: 4px; }
+  .card .desc { font-size: 0.88rem; color: #374151; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: 0.86rem; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e5e9f0; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e5e9f0; }
+  th { background: #f0f3f9; font-size: 0.78rem; color: #6b7280; }
+  tr:last-child td { border-bottom: none; }
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 0.85rem; }
+  .flow span.step { background: #fff3cd; color: #92720a; padding: 6px 12px; border-radius: 999px; font-weight: 700; }
+  .flow span.arrow { color: #9aa3b2; }
+
+  .note {
+    background: #fff3cd;
+    color: #92720a;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+
+  h3 { font-size: 0.95rem; margin: 22px 0 10px; }
+
+  footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #e5e9f0; font-size: 0.82rem; color: #6b7280; }
+  footer a { color: #2f6fed; margin-right: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/portfolio">← 포트폴리오로 돌아가기</a>
+  <h1>공부 기록</h1>
+  <p class="lead">뉴스한입을 만들기 전, 1~3주차에 정리한 바이브 코딩 기초 개념 노트예요.</p>
+
+  <!-- ===== 1주차 ===== -->
+  <div class="week-header">
+    <span class="week-badge">1</span>
+    <h2>1주차 · 바이브코딩에 대하여, 프롬프트 3요소</h2>
+  </div>
+  <div class="link-row">
+    <a href="https://youtu.be/2vnr5g4DFqU?si=2BkUNOHjTAMastJ-" target="_blank" rel="noopener noreferrer">🎬 참고 영상 1</a>
+    <a href="https://www.youtube.com/watch?v=q-j2scvSwdA&list=WL&index=2" target="_blank" rel="noopener noreferrer">🎬 참고 영상 2</a>
+    <a href="https://youtu.be/fjMceSbXTRM?si=DKwPfLHo34-dU-DE" target="_blank" rel="noopener noreferrer">🎬 참고 영상 3</a>
+  </div>
+
+  <div class="card">
+    <div class="term">LLM (Large Language Model)</div>
+    <div class="desc">언어가 학습된 인공지능. 챗GPT, Gemini CLI, Cursor IDE, Claude 등이 있음. Cursor IDE는 Visual Studio Code에 Claude를 연동해서 쓰는 것과 비슷함.</div>
+  </div>
+
+  <h3>AI가 나오고 새로 추가된 개념</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="term">Prompt</div>
+      <div class="desc">입력을 어떻게 체계적으로 할 것인가</div>
+    </div>
+    <div class="card">
+      <div class="term">Context</div>
+      <div class="desc">규칙 설정, 전후 상황을 다 전달해서 AI가 그 안에서 스스로 판단하게끔 제공</div>
+    </div>
+    <div class="card">
+      <div class="term">Harness</div>
+      <div class="desc">여러 에이전트를 써서 테스트·안전성 등을 체계화하는 것</div>
+    </div>
+  </div>
+
+  <h3>AI가 개념들을 활용해 개발(코딩)하는 흐름</h3>
+  <div class="flow">
+    <span class="step">언어를 통한 개발 (by AI)</span><span class="arrow">→</span>
+    <span class="step">소스 (Git 관리)</span><span class="arrow">→</span>
+    <span class="step">컴파일·빌드</span><span class="arrow">→</span>
+    <span class="step">서버 배포 또는 앱 형태</span>
+  </div>
+
+  <table>
+    <tr><th>프론트엔드 (화면)</th><th>백엔드 (서버)</th></tr>
+    <tr>
+      <td>HTML, CSS, JavaScript, React, Flutter, React Native, Android, iOS → 웹·앱 개발, 앱스토어에 올라감</td>
+      <td>Spring Boot, Node.js, FastAPI → 포트 번호로 프로그램 실행, 데이터센터·클라우드·OS 위에서 동작</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr><th>용어</th><th>설명</th></tr>
+    <tr><td>CI/CD</td><td>서버로 배포하는 행위를 자동화한 것</td></tr>
+    <tr><td>배포 서비스</td><td>Cloudflare, Vercel</td></tr>
+    <tr><td>클라우드</td><td>AWS, Azure</td></tr>
+    <tr><td>OS</td><td>윈도우, 리눅스</td></tr>
+    <tr><td>HTTP</td><td>HTML을 주고받을 수 있게 하는 프로토콜 약속. 페이지를 받거나 API로 단말과 통신 가능</td></tr>
+    <tr><td>API</td><td>Application Programming Interface</td></tr>
+    <tr><td>데이터베이스</td><td>MySQL, MongoDB 등 — SQL로 서버와 정보를 주고받음</td></tr>
+  </table>
+
+  <div class="note">
+    <b>바이브 코딩</b> — 엄밀한 설계나 문법 없이, 큰 그림만 자연어로 던지고 구체적인 코드는 AI가 채우는 방식<br />
+    <b>AI 에이전트</b> — 단순 챗봇이 아니라, 계획·실행·검증하고 틀리면 스스로 고치는 시스템
+  </div>
+
+  <h3>코딩 도구</h3>
+  <div class="link-row">
+    <a as="span">Claude Code (Desktop 앱 / CLI)</a>
+    <a as="span">Codex</a>
+    <a as="span">Antigravity</a>
+    <a as="span">Cursor</a>
+  </div>
+
+  <h3>디자인 생성 도구</h3>
+  <table>
+    <tr><th>도구</th><th>특징</th></tr>
+    <tr><td>Claude Design</td><td>퀄리티가 가장 예쁨</td></tr>
+    <tr><td>Stitch</td><td>외국스러운 느낌</td></tr>
+    <tr><td>Pencil</td><td>무료, 피그마와 유사, 무난한 디자인</td></tr>
+  </table>
+
+  <div class="card">
+    <div class="term">업무 자동화 — Claude Cowork</div>
+  </div>
+
+  <table>
+    <tr><th>종류</th><th>기술 스택</th></tr>
+    <tr><td>웹</td><td>Next.js, Supabase, Vercel</td></tr>
+    <tr><td>모바일 앱</td><td>Expo</td></tr>
+    <tr><td>데스크탑 앱</td><td>Tauri</td></tr>
+  </table>
+
+  <h3>AI 등장 이후 엔지니어링 발전 단계</h3>
+  <div class="flow">
+    <span class="step">프롬프트 엔지니어링 (잘 시키기)</span><span class="arrow">→</span>
+    <span class="step">컨텍스트 엔지니어링 (잘 알려주기)</span><span class="arrow">→</span>
+    <span class="step">하네스 엔지니어링 (잘 굴러가는 환경 만들기)</span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="term">스킬</div>
+      <div class="desc">특정 작업을 일관되게 수행하는 설명서 묶음</div>
+    </div>
+    <div class="card">
+      <div class="term">플러그인</div>
+      <div class="desc">스킬과 훅을 한데 묶어 한 번에 설치. <b>Superpowers</b> 플러그인 추천받음</div>
+    </div>
+  </div>
+
+  <!-- ===== 2주차 ===== -->
+  <div class="week-header">
+    <span class="week-badge">2</span>
+    <h2>2주차 · 배포</h2>
+  </div>
+  <div class="link-row">
+    <a href="https://vercel.com/new" target="_blank" rel="noopener noreferrer">🔗 Vercel</a>
+    <a href="https://www.juct.com/entry/%EC%B4%88%EB%B3%B4%EB%8F%84-10%EB%B6%84%EC%9D%B4%EB%A9%B4-%EB%81%9D-%E2%80%94-Vercel%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%9E%90%EB%8F%99-%EB%B0%B0%ED%8F%AC%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-%EC%B4%9D%EC%A0%95%EB%A6%AC" target="_blank" rel="noopener noreferrer">📄 Vercel 배포 정리글</a>
+  </div>
+  <div class="card">
+    <div class="desc">Vercel 기능을 직접 탐색하고, 실습하며 스스로 공부함</div>
+  </div>
+
+  <!-- ===== 3주차 ===== -->
+  <div class="week-header">
+    <span class="week-badge">3</span>
+    <h2>3주차 · API</h2>
+  </div>
+  <div class="link-row">
+    <a href="https://www.youtube.com/watch?v=Jg3FFBLyhK0" target="_blank" rel="noopener noreferrer">🎬 참고 영상</a>
+    <a href="https://www.heyaiidea.com/2026/07/it-planner-api-basic-guide.html" target="_blank" rel="noopener noreferrer">📄 API 기획자 가이드</a>
+    <a href="https://www.fanruan.com/ko-kr/blog/api-meaning" target="_blank" rel="noopener noreferrer">📄 API란 무엇인가</a>
+  </div>
+
+  <div class="card">
+    <div class="term">API (Application Programming Interface)</div>
+    <div class="desc">운영체제나 프로그래밍 언어가 제공하는 기능을 응용 프로그램에서 쓸 수 있게 만든 인터페이스. 응용프로그램에서 데이터를 읽거나 쓰기 위해 사용함. 필요한 정보를 얻으려면 API에 요청하고 응답을 받아 사용해야 함.</div>
+  </div>
+
+  <table>
+    <tr><th>구분</th><th>설명</th></tr>
+    <tr><td>Private API</td><td>내부용, 아무나 못 씀</td></tr>
+    <tr><td>Public API / Open API</td><td>누구나 쓸 수 있게 공개된 API</td></tr>
+  </table>
+
+  <footer>
+    <a href="/portfolio">← 포트폴리오</a>
+    <a href="/">뉴스한입 홈</a>
+  </footer>
+</div>
+</body>
+</html>
